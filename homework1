@@ -1,0 +1,213 @@
+\documentclass{tufte-handout}
+
+\title{Homework One}
+
+\author[Dr. Doeg]{The Invisible College}
+
+%\date{28 March 2010} % without \date command, current date is supplied
+
+%\geometry{showframe} % display margins for debugging page layout
+
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+  \graphicspath{{graphics/}} % set of paths to search for images
+\usepackage{amsmath}  % extended mathematics
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+\usepackage{lipsum}   % filler text
+\usepackage{fancyvrb} % extended verbatim environments
+  \fvset{fontsize=\normalsize}% default font size for fancy-verbatim environments
+  
+  
+  
+    %MADNESS
+  
+  \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{units}% To use \nicefrac
+\usepackage{cancel}% To use \cancel
+\usepackage{physymb}%To use r
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgf,tikz}%To draw 
+\usepackage{pgfplots}%To draw 
+\usetikzlibrary{shapes,arrows}%To draw 
+\usetikzlibrary{patterns,fadings}
+ \usetikzlibrary{decorations.pathreplacing}%To draw curly braces 
+ \usetikzlibrary{snakes}%To draw 
+ \usetikzlibrary{spy}%To do zoom-in
+ \usepackage{setspace}%Set margins and such
+ \usepackage{3dplot}%To draw in 3D
+\usepackage{framed}%To get shade behind text
+
+
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}%setting shade color
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+  
+  
+
+  
+  
+
+% Standardize command font styles and environments
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent
+Git is a distributed revision control system with an emphasis on speed, data integrity, and support for distributed, non-linear workflows.  Git was initially designed and developed by Linus Torvalds for Linux kernel development in 2005, and has since become one of the most widely adopted version control systems for software development.
+\end{abstract}
+
+%\printclassoptions
+
+\vspace{1cm}
+
+\section{Units, Constants and Conversions}
+
+\noindent Evaluate the following.  Express without prefixes and in the  simplest SI unit(s) possible.
+\vspace{1cm}
+\begin{flalign*}
+\frac{(6\ \nicefrac{\text{kg}\cdot\text{m}}{\text{s}})^2}{2\  \text{J}}
+\end{flalign*}
+\begin{flalign*}
+(4\ \text{mA})(3\  \text{ns})(2\  \text{V)}
+\end{flalign*}
+\begin{flalign*}
+\frac{e}{m_e}\sqrt{\frac{k_e}{G}}
+\end{flalign*}
+\begin{flalign*}
+3.1 \  \text{eV}
+\end{flalign*}
+\begin{flalign*}
+\frac{65\ \text{miles}}{\text{hour}}
+\end{flalign*}
+\begin{flalign*}
+11\ \text{cm}^3
+\end{flalign*}
+
+\newpage
+
+\section{Estimation}
+\vspace{1cm}
+Estimate the number of dirty socks on Sarah Lawrence campus.
+
+\vspace{1cm}
+\noindent Estimate the number of pineapples that could fit into the Tea House.
+
+\vspace{1cm}
+\noindent Knowing it takes 8 minutes for light to reach the earth from the sun, estimate the diameter of the sun.
+
+\newpage
+
+
+
+\section{Dimensions}
+\noindent State the dimension of the following in terms of the SI base quantities' dimensions.
+\vspace{1cm}
+\begin{flalign*}
+1\ \text{Joule}
+\end{flalign*}
+\begin{flalign*}
+1\ \text{Coulomb}
+\end{flalign*}
+\begin{flalign*}
+1\ \text{Newton}
+\end{flalign*}
+
+\vspace{1cm}
+\noindent 
+Consider a column of liquid with volume ($V$)  and surface area ($A$).  The pressure due to the fluid ($P$) is a function of depth below the surface ($y$).   Here $g$ is earth's gravity constant.
+$$P=\rho g y$$
+Determine the dimensions and SI units of the following quantities 
+\begin{flalign*}
+P 
+\end{flalign*}
+\begin{flalign*}
+\rho
+\end{flalign*}
+\begin{flalign*}
+g
+\end{flalign*}
+\begin{flalign*}
+ \frac{\Delta P}{\Delta y} 
+ \end{flalign*}
+\begin{flalign*}
+P\cdot A
+ \end{flalign*}
+\begin{flalign*}
+P \cdot V
+ \end{flalign*}
+\begin{flalign*}
+ \rho \cdot V
+ \end{flalign*}
+
+\newpage
+
+\section{Vectors}
+\vspace{1cm}
+
+$$\overrightarrow{p}=3\hat{x} + 4 \hat{y} \hspace{2cm} \overrightarrow{q}=-5\hat{x} + 12 \hat{y} $$
+\vspace{1cm}
+
+
+\noindent Given the vectors above, evaluate the following terms:
+
+\begin{flalign*}
+ |\overrightarrow{p}|
+ \end{flalign*}
+ 
+ \begin{flalign*}
+ q
+ \end{flalign*}
+ 
+ \begin{flalign*}
+ \hat{q}
+ \end{flalign*}
+ 
+ \begin{flalign*}
+ \overrightarrow{p}-2 \overrightarrow{q}
+ \end{flalign*}
+ 
+ \begin{flalign*}
+ |3\overrightarrow{p}-\overrightarrow{q}|
+ \end{flalign*}
+ 
+ \begin{flalign*}
+\overrightarrow{p} \cdot \overrightarrow{q}
+ \end{flalign*}
+ 
+ \begin{flalign*}
+|\overrightarrow{p} \times \overrightarrow{q}|
+ \end{flalign*}
+
+\newpage
+\section{Functions}
+\vspace{1cm}
+$$f(x)=-2x+3 \hspace{2cm} g(x)=-x^2-8x+15$$
+
+\vspace{1cm}
+
+\noindent The functions $f(x)$ and $g(x)$ are given above.  Draw both functions on the same graph.  Include the x and y intercept for each function and their points of intersection.
+\vspace{15cm}
+
+\section{\LaTeX}
+Download a distribution of \LaTeX \ and a bibliographic manager like $\mathrm{B{\scriptstyle{IB}} \! T\!_{\displaystyle E} \! X}$.
+
+
+\end{document}

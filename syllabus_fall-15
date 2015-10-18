@@ -1,0 +1,210 @@
+\documentclass[12pt]{article}
+\textwidth=7in
+\textheight=9.5in
+\topmargin=-0.75 in
+\headheight=0in
+\headsep=.5in
+\hoffset  -.9in
+
+\usepackage{outline}
+
+\pagestyle{empty}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\begin{document}
+
+\begin{center}
+{\bf Introduction to Mechanics:
+General Physics without Calculus \\ 
+\vspace{0.5cm}
+PHYS 3200 R 1 \ Fall 2015
+}
+\end{center}
+
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+ 
+
+\renewcommand{\arraystretch}{2}
+
+\vskip.25in
+\noindent\textbf{Professor:} Tony Schultz, Dudley Lawrence C1, Phone: (646) 334-4730, tony.physics@gmail.com
+\vskip.25in
+\noindent\textbf{Seminar:}  T\&Th 6:30 - 8:30 PM,  Science Building 301
+
+
+\vskip.25in
+\noindent\textbf{Textbook:}  \textit{College Physics: A Strategic Approach} 
+3rd edition, by Randall Knight
+
+\vspace*{.15in}
+
+\noindent \textbf{Course Outline:} 
+
+\small
+
+\begin{outline}
+
+ \item {\bf Week One - September 8th and 10th}
+  
+  \begin{outline}
+    \item {\bf Introduction} \\
+      Homework 1 assigned. 
+    \item {\bf Introduction \& 1-D Kinematics } \\
+  \end{outline}
+  
+   \item {\bf Week Two - September 15th and 17th }
+  
+  \begin{outline}
+    \item {\bf 2-D Kinematics in Cartesian Coordinates} \\
+      Homework 1 due. 
+      Homework 2 assigned. 
+    \item {\bf 2-D Kinematics in Polar Coordinates } \\
+  \end{outline}
+  
+\item {\bf Week Three - September 22nd and 24th }
+  
+ \begin{outline}
+    \item {\bf \LaTeX \ \& Git} \\
+      Homework 2 due. 
+      Practice exam given out. 
+    \item {\bf Review } \\
+    Practice exam covered.
+  \end{outline}
+  
+  \item {\bf Week Four - September 29th and October 1st}
+  
+  \begin{outline}
+    \item {\bf Exam 1} \\
+      Latex assignment given.
+    \item {\bf  Inertia} \\
+    Latex assignment due.
+    Exam returned and reviewed
+  \end{outline}
+  
+  \item {\bf Week Five - October 6th and 8th}
+  
+  \begin{outline}
+    \item {\bf Static Forces} \\
+      Homework 3 assigned. 
+    \item {\bf Dynamic Forces } \\
+  \end{outline}
+  
+  \item {\bf Week Six - October 13th and 15th}
+  
+  \begin{outline}
+    \item {\bf Work \& Kinetic Energy} \\
+      Homework 3 due. 
+      Homework 4 assigned. 
+    \item {\bf Potential Energy } \\
+  \end{outline}  
+  
+  \item {\bf Week Seven - October 22nd}
+  
+  \begin{outline}
+    \item {\bf STUDY BREAK} \\
+      Fun
+    \item {\bf Impulse \& Momentum } \\
+    Homework 4 due.
+    Homework 5 assigned.
+  \end{outline}
+  
+  \item {\bf Week Eight - October 27th and 29th }
+  
+  \begin{outline}
+    \item {\bf Collision} \\
+      Homework 5 due.
+      Practice exam given out.
+    \item {\bf Review } \\
+    Practice exam covered
+  \end{outline}
+  
+
+  
+  \item {\bf Week Nine - November 3rd and 5th }
+  
+  \begin{outline}
+    \item {\bf Exam 2} \\
+      Bibtex bibliography assigned. 
+    \item {\bf Torque Statics } \\
+    Exam covered.\\
+    Bibtex bibliography due.\\
+    Homework 6 assigned.
+  \end{outline}
+  
+  \item {\bf Week Ten - November 10th and 12th }
+  
+  \begin{outline}
+    \item {\bf Dynamic Torque and Angular Momentum} \\
+    \item {\bf Rotational Kinetic Energy \& Orbital Motion } \\
+  \end{outline}
+  
+  \item {\bf Week Eleven - November 17th and 19th}
+  
+  \begin{outline}
+    \item {\bf Harmonic Oscillation} \\
+     Homework 6 due.
+      Homework 7 assigned. 
+    \item {\bf Harmonic Oscillation \& Review } \\
+    Exam review.
+  \end{outline}
+  
+  \item {\bf Week Twelve - November 24th}
+  
+  \begin{outline}
+    \item {\bf Exam 3} \\
+    Tikz assignment given.
+    \item {\bf THANKSGIVING } \\
+  \end{outline}
+  
+  \item {\bf Week Thirteen - December 1st and 3rd}
+  
+  \begin{outline}
+    \item {\bf Kinetic Theory} \\
+    Tikz assignment due.\\
+    Homework 7 due.\\
+      Homework 8 assigned. 
+    \item {\bf Thermodynamics } \\
+  \end{outline}
+  
+  \item {\bf Week Fourteen}
+  
+  \begin{outline}
+    \item {\bf Fluids} \\
+      Homework 8 due. 
+    \item {\bf Final Review } \\
+    Conference work due.
+  \end{outline}
+  
+  \item {\bf Week Fifteen }
+  
+  \begin{outline}
+    \item {\bf Final Exam} \\ 
+    \item {\bf Party Time} \\
+  \end{outline}
+
+
+\end{outline}
+
+
+
+\vspace*{.15in}
+\normalsize
+\noindent\textbf{Conference Projects:} Students will complete conference work this course culminating in a paper and poster.  The paper will be written in the scientific publishing language \LaTeX.  Ongoing work will be presented throughout the semester.
+
+
+\vskip.25in
+\noindent \textbf{Homework \& Assessments}: There will be weekly homework assignments (eight total) and three exams given throughout the semester.  In addition there will be three short LaTeX assignments and a final exam.
+
+\vskip.25in
+\noindent\textbf{Lab}: Scott Calvin will teach lab in two sections.  
+
+\vskip.25in
+\noindent\textbf{Attendance}: Your attendance is mandatory and required for getting credit in the course.  There are no unexcused absences at all.  Absence due to illness or emergency requires a doctor's note to be excused.
+
+
+\end{document}

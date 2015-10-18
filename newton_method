@@ -1,0 +1,124 @@
+\documentclass{tufte-handout}
+
+\title{Newton's Method}
+
+\author[Dr. Schultz]{The Invisible College}
+
+%\date{28 March 2010} % without \date command, current date is supplied
+
+%\geometry{showframe} % display margins for debugging page layout
+
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+  \graphicspath{{graphics/}} % set of paths to search for images
+\usepackage{amsmath}  % extended mathematics
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+\usepackage{lipsum}   % filler text
+\usepackage{fancyvrb} % extended verbatim environments
+  \fvset{fontsize=\normalsize}% default font size for fancy-verbatim environments
+  
+  
+  
+    %MADNESS
+  
+  \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{units}% To use \nicefrac
+\usepackage{cancel}% To use \cancel
+\usepackage{physymb}%To use r
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgf,tikz}%To draw 
+\usepackage{pgfplots}%To draw 
+\usetikzlibrary{shapes,arrows}%To draw 
+\usetikzlibrary{patterns,fadings}
+ \usetikzlibrary{decorations.pathreplacing}%To draw curly braces 
+ \usetikzlibrary{snakes}%To draw 
+ \usetikzlibrary{spy}%To do zoom-in
+ \usepackage{setspace}%Set margins and such
+ \usepackage{3dplot}%To draw in 3D
+\usepackage{framed}%To get shade behind text
+
+
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}%setting shade color
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+  
+  
+
+  
+  
+
+% Standardize command font styles and environments
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{newton.jpeg}
+  \caption{This is Isaac Newton.}
+  \label{fig:marginfig}
+\end{marginfigure}
+\begin{abstract}
+\noindent
+In numerical analysis, Newton's method (also known as the Newton-Raphson method), named after Isaac Newton and Joseph Raphson, is a method for finding successively better approximations to the roots (or zeroes) of a real-valued function.
+\end{abstract}
+$$f(a)=0$$
+
+\begin{enumerate}
+  \item Start with a guess for x.
+  \item Evaluate the function f(x).
+  \item If f(x)<(small threshold) then x is your root!
+  \item Determine the slope of the tangent line at x.
+  \item Extrapolate the x value where the tangent line would cross the x-axis.
+  \item Repeat starting at step 2.
+\end{enumerate}
+\normalsize
+\section{Write the Algorithm in Python}
+
+\marginnote[40pt]{Here is a starter file.}
+\begin{framed}
+\begin{verbatim}
+#WE ARE LOOKING FOR THE POSITIVE ROOT 
+#OF THE FUNCTION f(x)=3-x*x
+
+#this is the increment for determining the slope 
+#of the tangent line
+dx=0.01
+
+#this is the threshold
+e=0.02
+
+#this is the initial guess
+x=1.0
+
+while abs(3.0-x*x)>e:
+    f=3.0-x*x
+    f1=3.0-(x+dx)*(x+dx)
+    s=(f1-f)/dx
+    x=x+(-f)/s
+
+print x
+\end{verbatim}
+\end{framed}
+
+\bibliography{sample-handout}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}

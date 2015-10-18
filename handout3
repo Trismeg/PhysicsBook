@@ -1,0 +1,181 @@
+\documentclass{tufte-handout}
+
+\title{An Introduction to Git}
+
+\author[Dr. Doeg]{The Invisible College}
+
+%\date{28 March 2010} % without \date command, current date is supplied
+
+%\geometry{showframe} % display margins for debugging page layout
+
+\usepackage{graphicx} % allow embedded images
+  \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+  \graphicspath{{graphics/}} % set of paths to search for images
+\usepackage{amsmath}  % extended mathematics
+\usepackage{booktabs} % book-quality tables
+\usepackage{units}    % non-stacked fractions and better unit spacing
+\usepackage{multicol} % multiple column layout facilities
+\usepackage{lipsum}   % filler text
+\usepackage{fancyvrb} % extended verbatim environments
+  \fvset{fontsize=\normalsize}% default font size for fancy-verbatim environments
+  
+  
+  
+    %MADNESS
+  
+  \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{mathtools}% http://ctan.org/pkg/mathtools
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{units}% To use \nicefrac
+\usepackage{cancel}% To use \cancel
+\usepackage{physymb}%To use r
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgf,tikz}%To draw 
+\usepackage{pgfplots}%To draw 
+\usetikzlibrary{shapes,arrows}%To draw 
+\usetikzlibrary{patterns,fadings}
+ \usetikzlibrary{decorations.pathreplacing}%To draw curly braces 
+ \usetikzlibrary{snakes}%To draw 
+ \usetikzlibrary{spy}%To do zoom-in
+ \usepackage{setspace}%Set margins and such
+ \usepackage{3dplot}%To draw in 3D
+\usepackage{framed}%To get shade behind text
+
+
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}%setting shade color
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+  
+  
+
+  
+  
+
+% Standardize command font styles and environments
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent
+Git is a distributed revision control system with an emphasis on speed, data integrity, and support for distributed, non-linear workflows.  Git was initially designed and developed by Linus Torvalds for Linux kernel development in 2005, and has since become one of the most widely adopted version control systems for software development.
+\end{abstract}
+
+%\printclassoptions
+
+\vspace{1cm}
+
+\section{Uploading a Project Folder to Github}
+
+\begin{shaded}
+\begin{verbatim}
+$ cd path/to/project/folder
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+$ git init
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+$ git add .
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+$ git add file1
+$ git add file2.jpg
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+$ git remote add origin https://github.com/...
+   AccountName/ProjectFolderName.git
+$ git remote -v
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+$ git push origin master
+\end{verbatim}
+\end{shaded}
+
+\newpage
+
+
+\section{Cloning an Existing Repository From GitHub }
+
+\begin{shaded}
+\begin{verbatim}
+$ cd path/to/whereUwant/folder
+\end{verbatim}
+\end{shaded}
+
+\begin{shaded}
+\begin{verbatim}
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+\end{verbatim}
+\end{shaded}
+
+\section{Updating an Existing Repository From GitHub }
+
+\begin{shaded}
+\begin{verbatim}
+$ git pull -u origin master
+\end{verbatim}
+\end{shaded}
+
+
+\section{Tell Git Who You Are}
+
+\begin{shaded}
+\begin{verbatim}
+$ git config --global user.name "Dr Doeg"
+$ git config --global user.email sam@example.com
+\end{verbatim}
+\end{shaded}
+
+
+\section{Get Git to Tell You Where It's At}
+
+\begin{shaded}
+\begin{verbatim}
+$ git status
+\end{verbatim}
+\end{shaded}
+
+
+
+
+\section{Get Git and Github}
+https://git-scm.com/downloads  \\
+\noindent https://github.com/ 
+
+\section{More on Git}
+https://git-scm.com/book/en/v2
+
+\bibliography{sample-handout}
+\bibliographystyle{plainnat}
+
+
+
+\end{document}
