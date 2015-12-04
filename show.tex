@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=0.6]
+	\tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.1cm,post length=0.1cm,segment length=6}]
+	\draw[->,thick] (0,0) -- (0,1) node [anchor=south east,scale=1] {$F_{spring}$}; 
+    	\fill[black] (0,0) circle (0.5mm);
+	   
+	\begin{scope}[shift={(-8,-1)}, scale=0.5]
+		\draw[dashed, color=gray] (-3,2) -- (3,2) node [near start, anchor =south east] {\tiny equilibrium};
+		\draw[spring] (0,1) -- (0,5);
+		\draw[->,thick, color=gray] (2,2) -- (2,0) node [midway, anchor =west] {\small$\overrightarrow{x}$};
+		\fill[color=gray!30, path fading=north] (-3,5) -- (3,5) -- (3,7) -- (-3,7) ;
+		\draw[very thick] (-3,5) -- (3,5);  
+		\draw[very thick] (-1,-1) -- (-1,1) -- (1,1) -- (1,-1) -- cycle;  	 
+		\draw (0,0) node [anchor=center]{$m$};
+   	 \end{scope}
+   
+   
+   	  \begin{scope}[shift={(-2,0.2)}, scale=0.75, rotate=180] 
+	  	\draw[ thick,-stealth] (0,-0.1) -- (0,0.8) node [near start,anchor=east]{\scriptsize $x$};  
+	 	 \draw[thick](-0.1,0) -- (0.1,0);  
+	  \end{scope}
+	  
+	  
+	  \begin{scope}[shift={(-15,0)}, scale=0.5, rotate=45]
+		
+		\draw[->] (0,0) -- (8,0) node [anchor=north] {$x$};
+		\draw[->] (0,0) -- (0,8) node [anchor=east] {$y$};
+	 \end{scope}
+
+	  
+   \end{tikzpicture}

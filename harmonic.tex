@@ -143,6 +143,11 @@ $$R=\sqrt{A^2 + B^2} \hspace{2cm} \phi=\tan^{-1}\left(\frac{B}{A}\right)$$
 }
 
 \section{Damped Harmonic Oscillator}
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{dampening.jpg}
+  \caption{Solutions to the damped harmonic oscillation}
+  \label{fig:marginfig}
+\end{marginfigure}
 \normalsize
 The differential equation that represents the simple harmonic oscillator system is written below.
 $$ma=-fx \hspace{2cm} ma+kx=0$$
@@ -150,3 +155,48 @@ This equations gives the following solution.
 $$x(t)=A\cos(\omega t)+B\sin(\omega t) $$
 The dampening occurs when a force is introduced that is proportional to the velocity.  This is the dampening force.
 $$ma=-\beta v-kx$$
+$$ma+\beta v+kx=0$$
+This yields three types of solutions.
+\subsection{Over-Damped}
+In the case of over damping the dampening coefficient $\beta$ is above a certain threshold. 
+$$\beta^2>4mk$$
+This yields solutions of exponential decay as follows.
+$$x(t)=Ae^{-\frac{\beta+\sqrt{\beta^2-4mk}}{2m}t}$$
+\subsection{Critically-Damped}
+In the case of critical damping the dampening coefficient $\beta$ equal to the threshold. 
+$$\beta^2=4mk$$
+This yields exponential decay as follows.
+$$x(t)=Ae^{-\frac{\beta}{2m}t}$$
+\subsection{Under-Damped}
+In the case of under damping the dampening coefficient $\beta$ below the threshold. 
+$$\beta^2<4mk$$
+This yields solutions of decaying oscillation as follows.
+$$x(t)=Ae^{-\frac{\beta}{2m}t}\cos(\omega t)+Be^{-\frac{\beta}{2m}t}\sin(\omega t)$$
+$$A=x_0\ \ \ \ \ \ B=\frac{v_0+\nicefrac{\beta}{2m}}{\omega}\ \ \ \ \ \ \omega=\frac{\sqrt{\beta^2-4mk}}{2m}$$
+
+\section{Driven Damped Harmonic Oscillator}
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{resonance.jpg}
+  \caption{Amplitude at resonance}
+  \label{fig:marginfig}
+\end{marginfigure}
+If a damped oscillator is driven by an external force, the solution to the motion equation has two parts, a transient part and a steady-state part, which must be used together to fit the physical boundary conditions of the problem.  The system will obey the following differential equation.  $F(t)$ is the driving force.
+$$ma=-\beta v-kx+F(t)$$
+$$ma+\beta v+kx=F(t)$$
+The transient solutions go to zero after sufficient time and only the steady state solutions will remain.  The steady state solutions with follow the frequency of the driving force.  Resonance occurs if the frequency of the driving force matches the natural frequency of the system.  When this happens with insufficient dampening the driving force with continually add energy to the system until catastrophe occurs.
+
+\section{Mechanical Resonance}
+\begin{marginfigure}[100pt]
+  \includegraphics[width=\linewidth]{tacoma.jpg}
+  \caption{Tacoma Narrows Bridge (1940)}
+  \label{fig:marginfig}
+\end{marginfigure}
+\marginnote[20pt]{The original Tacoma Narrows Bridge roadway twisted and vibrated violently under 40-mile-per-hour winds on it's last day.  It collapsed on the morning of November 7, 1940.}
+Mechanical resonance is the tendency of a mechanical system to respond at greater amplitude when the frequency of its oscillations matches the system's natural frequency of vibration (its resonance frequency or resonant frequency) than it does at other frequencies. It may cause violent swaying motions and even catastrophic failure in improperly constructed structures including bridges, buildings and airplanes, a phenomenon known as resonance disaster.
+
+Avoiding resonance disasters is a major concern in every building, tower and bridge construction project. The Taipei 101 building relies on a 660-ton pendulum, a tuned mass damper, to modify the response at resonance. Furthermore, the structure is designed to resonate at a frequency which does not typically occur. Buildings in seismic zones are often constructed to take into account the oscillating frequencies of expected ground motion. In addition, engineers designing objects having engines must ensure that the mechanical resonant frequencies of the component parts do not match driving vibrational frequencies of the motors or other strongly oscillating parts.
+
+
+
+ 
+
