@@ -1,0 +1,1131 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2005-2014 by David Zaslavsky <diazona@ellipsix.net>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is David Zaslavsky
+%
+% This work consists of the files physymb.dtx and physymb.ins
+% and the derived files physymb.sty and physymb.pdf.
+%
+% \fi
+
+% \iffalse
+%<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<package>\ProvidesPackage{physymb}[2014/12/19 v0.3 Physics symbol definitions]
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[boldvectors,units,particle,braket,mandi]{physymb}
+\usepackage{hyperref}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{physymb.dtx}
+\end{document}
+%</driver>
+% \fi
+
+% \CheckSum{649}
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.1}{2010/12/15}{Conversion from sty to dtx}
+% \changes{v0.2}{2011/05/09}{Switched to braket and siunitx as external packages}
+% \changes{v0.2}{2011/05/09}{Implemented the particle option}
+% \changes{v0.2}{2011/05/09}{Switched to dotless i and j in unit vectors}
+% \changes{v0.2}{2011/05/09}{Documented changes to |\real| and |\imag|}
+% \changes{v0.3}{2013/04/02}{Fix compatibility issues with mandi}
+% \changes{v0.3}{2014/10/15}{Deprecate package}
+%
+% \GetFileInfo{physymb.sty}
+%
+% \DoNotIndex{\#,\$,\%,\&,\@,\\,\{,\},\^,\_,\~,\ }
+% \DoNotIndex{\accentset,\allowdisplaybreaks}
+% \DoNotIndex{\bar,\boolean}
+% \DoNotIndex{\cos,\cubic}
+% \DoNotIndex{\dagger,\DeclareFontShape,\DeclareMathAlphabet,\DeclareMathOperator}
+% \DoNotIndex{\DeclareOption,\DeclareSIUnit,\Delta}
+% \DoNotIndex{\ell\ensuremath,\equal}
+% \DoNotIndex{\frac}
+% \DoNotIndex{\gamma}
+% \DoNotIndex{\hat}
+% \DoNotIndex{\ifthenelse}
+% \DoNotIndex{\joule}
+% \DoNotIndex{\Lambda,\langle,\left,\lVert,\lvert}
+% \DoNotIndex{\mathbb,\mathbf,\mathcal,\mathcalligra,\mathrm,\meter,\mu}
+% \DoNotIndex{\nabla,\newboolean,\newcommand,\nu}
+% \DoNotIndex{\Omega,\omega}
+% \DoNotIndex{\partial,\per,\phi,\pi,\ProcessOptions}
+% \DoNotIndex{\rangle,\relax,\renewcommand,\RequirePackage,\rho,\right,\rightharpoonup}
+% \DoNotIndex{\rpcubic,\rVert,\rvert}
+% \DoNotIndex{\setboolean,\Sigma,\sin,\star}
+% \DoNotIndex{\tan,\tau,\theta,\times}
+% \DoNotIndex{\unit}
+% \DoNotIndex{\vert}
+% \DoNotIndex{\Xi}
+%
+% \title{The \textsf{physymb} package\thanks{This document corresponds to \textsf{physymb}~\fileversion, dated~\filedate.}}
+% \author{David Zaslavsky \\ \texttt{diazona@ellipsix.net}}
+%
+% \maketitle
+% \begin{abstract}
+%  \textbf{This package is obsolete.}
+%  The |physymb| package contains a bunch of simple macro definitions that
+%  may be useful for typesetting physics papers or other things.
+%  All the useful macros are implemented by other packages, which you should
+%  use directly instead of |physymb|.
+% \end{abstract}
+%
+% It has come to my attention that other packages provide much the same functionality
+% as |physymb|, so I am marking the package obsolete. Here are some packages you
+% can use instead of |physymb|:
+% \begin{description}
+%  \item[|physics|] gives differentials and derivatives, various sorts of paired
+%   delimiters including absolute value and vector norm, vector calculus operators
+%   including div, grad, and curl, inverse trigonometric functions, Dirac notation
+%   and matrix notation
+%  \item[|commath|] gives differentials, derivatives, and various sorts of paired
+%   delimiters
+%  \item[|braket|] gives Dirac notation
+%  \item[|siunitx|] gives units and scientific notation
+%  \item[|hepnames|] gives elementary particles
+%  \item[|mandi|] gives inverse trig functions, signum, unit vectors, vector
+%   calculus including div, grad, and curl, and the Griffiths script r. |mandi|
+%   also provides elementary unit typesetting, but I consider |siunitx| to be
+%   superior for that purpose. It also provides notation for differentials and
+%   derivatives, but the implementations in |commath| or |physics| are probably
+%   easier to use.
+% \end{description}
+% Many macros in |physymb| are now implemented in terms of these other packages.
+%
+% I will leave |physymb| up on CTAN so old documents can still be compiled.
+% However, there will be no further updates to this package (unless someone
+% reports a bug and makes a convincing case that ``use other packages'' is not
+% an acceptable workaround).
+%
+% For the rest of this documentation, when there are a bunch of similar macros
+% that I explain together, I've usually only listed one or two in the left margin.
+% In these cases, all the macros are given in the text.
+%
+% \section{Options}
+%
+% |physymb| recognizes the following options, in no particular order.
+%
+% \begin{itemize}
+%  \item |arrowvectors| causes vectors (specifically, the |\vec| command) to be rendered
+%   with an arrow above the symbol.
+%  \item |boldvectors| causes vectors (again, from |\vec|) to be rendered by typesetting
+%   the symbol in bold. It's the alternative to |arrowvectors|.
+%  \item |braket| pulls in the |braket| package. (It's precisely equivalent to
+%   |\usepackage{braket}|, it's just here for convenience.)
+%  \item |feynman| pulls in the |feynmp| package. (It's precisely equivalent to
+%   |\usepackage{feynmp}|, it's just here for convenience.)
+%  \item |overridemandi| is only relevant if you are using |physymb| and the |mandi|
+%   package in the same document, and only if you load |physymb| after |mandi|. If you do,
+%   specifying this option causes certain macros in physymb to be defined in a way that
+%   will override the definitions of the same macros from |mandi|. Otherwise, the
+%   definitions of those commands in |physymb| will be skipped, leaving the definitions in
+%   |mandi| to be used. The affected macros are |\evalat|, |\curl|, and |\abs|. (If you
+%   specify this option when |mandi| has not been loaded, it has no effect, but a warning
+%   will be printed in the log.)
+%  \item |particle| enables all the particle physics macros.
+%  \item |units| pulls in the |siunitx| package and enables the additional unit macros.
+% \end{itemize}
+%
+% \section{Macros}
+%
+% \subsection{Trigonometry}
+%
+% \DescribeMacro{\asin}
+% \DescribeMacro{\acos}
+% The AMS packages only define inverse trigonometric functions using the ``arc''
+% syntax, i.e. they actually prefix ``arc'' to the name (as in $\arcsin x$).
+% Sometimes you'd rather write them with a superscript $-1$ to save space, so
+% those versions are imported from the |mandi| package. We have the inverse
+% functions |\asin|, |\acos|, |\atan|, |\asec|, |\acsc|, and |\acot|.
+%
+% \DescribeMacro{\sech}
+% \DescribeMacro{\cosh}
+% For some reason, the hyperbolic sine and cosine |\sech| and |\cosh| aren't
+% defined in the AMS packages, but they are defined in |mandi| and those
+% definitions are incorporated here.
+%
+% \DescribeMacro{\asinh}
+% \DescribeMacro{\acosh}
+% Finally, the inverse hyperbolic trig functions written with the superscript
+% $-1$ are defined just as with the regular inverse trig functions. We have
+% |\asinh|, |\acosh|, |\atanh|, |\asech|, |\acsch|, and |\acoth|, again all
+% imported from |mandi|.
+%
+% \subsection{Sets}
+%
+% There are certain sets of numbers that are semi-frequently referenced in physics.
+% Typically they're used to say something like $n\in\intset$. Of course, a
+% macro like |\intset| is not necessarily much quicker than writing
+% |\mathbb{Z}|, but these macros are intended to have names that relate to
+% their meanings so that you don't have to remember which letter goes to which set.
+%
+% \DescribeMacro{\whlset}
+% |\whlset| ($\whlset$) denotes the set of whole numbers, which is typically
+% defined to include all integers greater than zero, although there are different
+% contradictory definitions floating around.
+%
+% \DescribeMacro{\natset}
+% |\natset| ($\natset$) denotes the set of natural numbers, which is typically
+% defined to include all integers greater than or equal to zero. Some people
+% define ``natural numbers'' to exclude zero.
+%
+% \DescribeMacro{\intset}
+% |\intset| ($\intset$) denotes the set of all integers.
+%
+% \DescribeMacro{\realset}
+% |\realset| ($\realset$) denotes the set of all real numbers.
+%
+% \DescribeMacro{\imagset}
+% |\imagset| ($\imagset$) denotes the set of all imaginary numbers, which is
+% all complex numbers with real part equal to zero. This one is infrequently
+% used.
+%
+% \DescribeMacro{\cpxset}
+% |\cpxset| ($\cpxset$) denotes the set of all complex numbers.
+%
+% \subsection{Calculus}
+%
+% Probably the most useful macros in the package are the derivative operators.
+% Since it's so common to write something of the form $\ud{y}{x}$ or $\pd{y}{x}$,
+% we have two-character macros for each:
+% \begin{itemize}
+%  \item \DescribeMacro{\ud} |\ud|\marg{top}\marg{bottom} typesets the normal total derivative
+%  \item \DescribeMacro{\pd} |\pd|\marg{top}\marg{bottom} typesets a partial derivative, which
+%   is the same thing but with a partial derivative symbol instead of the $\udc$.
+% \end{itemize}
+% \DescribeMacro{\udd}
+% \DescribeMacro{\uddd}
+% \DescribeMacro{\pdd}
+% \DescribeMacro{\pddd}
+% There are variants of these that produce higher-order derivatives; you can add
+% an order by adding another |d|, up to a total of three. These are implemented as
+% wrappers around |\od| and |\pd| from the |commath| package.
+% If you need something higher than the third derivative, you're probably best off
+% using the |commath| macros directly, with their optional argument giving the order
+% of the derivative.
+%
+% \DescribeMacro{\udc}
+% \DescribeMacro{\pdc}
+% The macro |\udc| gives you the character that represents a differential. It's typically
+% set in roman type to distinguish it from a variable. |\pdc| is also defined as the
+% partial derivative character for consistency. There are variants of each with exponents
+% (up to 3) built in; again, you get them by adding an extra |d| or two to the name of the
+% command, |\uddc| and |\udddc| and so on.
+%
+% \DescribeMacro{\uds}
+% \DescribeMacro{\pds}
+% If you're using these in an integral, it's common to want a small space before the
+% differential, so there are variants of the preceding commands defined that include
+% this small space for you; they replace the |c| with an |s|. They follow the same
+% pattern of adding additional |d|'s to get exponents. For example:
+%
+% \begin{minipage}{.64\textwidth}
+% \begin{center}
+%  |\iint e^{i\vec{k}\cdot\vec{x}}\udds\vec{x}|
+% \end{center}
+% \end{minipage}
+% \begin{minipage}{.34\textwidth}
+% \begin{equation*}
+%  \iint e^{i\vec{k}\cdot\vec{x}}\udds\vec{x}
+% \end{equation*}
+% \end{minipage}
+%
+% \subsection{Vector Calculus}
+%
+% \DescribeMacro{\div}
+% \DescribeMacro{\grad}
+% \DescribeMacro{\curl}
+% |\physymb| defines |\div|, |\grad|, and |\curl|, to represent the
+% divergence, gradient, and curl, in terms of the corresponding macros
+% from |mandi|.
+%
+% \DescribeMacro{\lapl}
+% There is also a macro for the Laplacian operator (divergence of a
+% gradient), |\lapl|, again defined in terms of the macro from |mandi|.
+%
+% \subsection{Complex Analysis}
+%
+% \DescribeMacro{\conj}
+% There is a macro to indicate the conjugate of a number, |\conj|\marg{number}.
+% It puts a superscript star after the number, as in $\conj{z}$.
+%
+% \DescribeMacro{\realop}
+% \DescribeMacro{\imagop}
+% The traditional keywords indicating the real and imaginary parts of a complex number
+% are given macros |\realop| and |\imagop|. They typeset $\realop$ and $\imagop$
+% respectively.
+%
+% \DescribeMacro{\real}
+% \DescribeMacro{\imag}
+% Why the |op|? Well, there are alternate versions that will also put curly braces
+% around the following argument, |\real| and |\imag|. This is the way $\realop$ and
+% $\imagop$ are often used. (I'm open to changing the definitions of these based on
+% feedback.)
+%
+% \begin{minipage}{.64\textwidth}
+% \begin{center}
+%  |\real{z}, \imag{z}|
+% \end{center}
+% \end{minipage}
+% \begin{minipage}{.34\textwidth}
+% \begin{equation*}
+%  \real{z}, \imag{z}
+% \end{equation*}
+% \end{minipage}
+%
+% \DescribeMacro{\abs}
+% The macro |\abs|\marg{value} surrounds its argument with vertical bars.
+% It is simply imported from |mandi|.
+%
+% \subsection{Linear Algebra}
+%
+% There are several assorted macros for linear algebra keywords and concepts.
+%
+% \DescribeMacro{\vec}
+% \DescribeMacro{\vecvar}
+% Vectors can be written using the macro |\vec|\marg{label}, which typesets
+% the \meta{label} either in bold or with an arrow over it, according to which
+% option was passed to the package (|arrowvectors| or |boldvectors|).
+% The default is to use an arrow, to resemble the builtin definition of
+% |\vec| (which, by the way, is overridden by this package). In many cases
+% I prefer bold. |\vecvar|\marg{label} is another macro that does the exact
+% same thing, for consistency with the other kinds of variables.
+%
+% \DescribeMacro{\tnsvar}
+% The macro |\tnsvar|\marg{label} is for typesetting tensors. This just makes
+% the \meta{label} bold, it doesn't do anything with indices. If you want a way
+% to typeset tensor indices, look at the
+% \href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=tensor}{tensor}
+% package.
+%
+% \DescribeMacro{\matvar}
+% |\matvar|\marg{label} is intended to designate matrices. It makes the label
+% bold.
+%
+% \DescribeMacro{\identitym}
+% The macro |\identitym| represents the identity matrix. It typesets a 1 in
+% the same style as |\matvar| (so, bold).
+%
+% \DescribeMacro{\determinant}
+% The macro |\determinant|\marg{matrix} uses vertical bars to denote the determinant
+% of the \meta{matrix}. It's an alternative to the keyword operator |\det|, which
+% just typesets as $\det$.
+%
+% \DescribeMacro{\trace}
+% The macro |\trace| just typesets $\trace$. It's akin to |\det|.
+%
+% \DescribeMacro{\diag}
+% This just typesets $\diag$, which is used to represent a matrix with the given entries
+% on the diagonal. For example, one might write |\diag(1,2,3,4)|.
+%
+% \DescribeMacro{\norm}
+% The norm of a vector can be denoted by double vertical bars. This is implemented by
+% |\norm|\marg{value}.
+%
+% \DescribeMacro{\unitx}
+% \DescribeMacro{\unity}
+% \DescribeMacro{\unitz}
+% Since it's so common to refer to unit vectors using hat notation, there are a
+% bunch of macros for them using various letters. The package defines |\unitd|,
+% |\unite|, |\uniti|, |\unitj|, |\unitk|, |\unitl| (which typesets as $\unitl$,
+% not the normal $l$), |\unitn|, |\unitp|, |\unitq|, |\unitr|, |\units|, |\unitt|,
+% |\unitu|, |\unitv|, |\unitw|, |\unitx|, |\unity|, |\unitz|, and for non-roman
+% characters, |\unitphi|, |\unitrho|, |\unittheta|, and |\unitomega|.
+% \DescribeMacro{\unitvec}
+% If you want to use a different letter as a unit vector, it can be done with
+% |\unitvec|\marg{symbol}.
+%
+% \DescribeMacro{\herm}
+% |\herm|\marg{operator} designates the hermitian conjugate of an operator with
+% a superscript dagger.
+%
+% \DescribeMacro{\transpose}
+% |\transpose|\marg{matrix} sets a superscript $T$ after the matrix to denote
+% the transpose.
+%
+% \DescribeMacro{\commut}
+% \DescribeMacro{\acommut}
+% There are simple macros for the commutator, |\commut|\marg{operator}\marg{operator},
+% and the anticommutator, |\acommut|\marg{operator}\marg{operator}. They just
+% put the appropriate kind of braces around the arguments (and the comma between
+% them, of course).
+%
+% \subsection{Differential Geometry}
+% \DescribeMacro{\exd}
+% The exterior derivative has a macro, |\exd|, kind of like the macro for differentials
+% ($\udc$) although typeset in bold to distinguish it. This one doesn't have any variants,
+% though, because $\exd^2 = 0$.
+%
+% \DescribeMacro{\hodge}
+% The macro |\hodge| just puts a star (not superscript) to represent the Hodge dual.
+% Use it as a prefix to the variable, $\hodge\exd x$.
+%
+% \subsection{Classical Mechanics}
+%
+% \DescribeMacro{\pbrac}
+% The Poisson brackets of a pair of variables can be typeset using the macro
+% |\pbrac|\marg{function}\marg{function}. This just surrounds the two arguments
+% with curly braces, producing $\pbrac{f}{g}$.
+%
+% \DescribeMacro{\pbracvars}
+% If you want to specify which variables the derivatives in the Poisson brackets
+% are being taken with respect to, use the variant
+% \begin{center}
+%  |\pbracvars|\marg{function}\marg{function}\marg{variable}\marg{variable}
+% \end{center}
+% It comes out looking like $\pbracvars{f}{g}{q}{p}$.
+%
+% \subsection{Quantum Mechanics}
+%
+% If the |braket| option is passed, |physymb| pulls in the |braket| package for
+% writing Dirac notation. See the documentation for that package for details.
+%
+% Additionally, two semantic macros are provided as alternate names for certain
+% combinations of bras and kets:
+%
+% \DescribeMacro{\expect} To get an expectation value (an on-diagonal matrix element with
+% the state left implicit, $\expect{A}$), use |\expect|\marg{operator}. This is just an
+% alternate name for |braket|'s |\braket|\marg{operator}; the only reason to use it is
+% to make it clear what you meant to someone reading your source code. (A very good reason,
+% as far as I'm concerned) You can put an arbitrary expression within |\expect|, but don't
+% use vertical bars because then it'll look like a matrix element $\expect{\psi|A|\psi}$.
+%
+% \DescribeMacro{\Expect} |\Expect| is the same as |\expect| except that it scales the angle
+% brackets using |\left| and |\right|.
+%
+% \DescribeMacro{\project} For a projection operator (outer product between a state and itself),
+% we have the command |\project|\marg{label}\marg{value}, which comes out as $\project{\psi}{x}$.
+% To get a general outer product between two different states, use |\bra| and |\ket|,
+% \begin{center}
+%  |\ket{|\meta{ket label}|}|\meta{value}|\bra{|\meta{bra label}|}|
+% \end{center}
+%
+% \DescribeMacro{\Project} Again, |\Project| is just like |\project| except that it scales the
+% delimiters.
+%
+% \subsection{Units}
+%
+% If the |units| option is provided to |physymb|, it automatically includes the
+% |siunitx| package and defines some additional units that are often useful in practice.
+% See the documentation of |siunitx| for commands provided by that package.
+%
+% \paragraph{Additional units} The |siunitx| package only includes SI units (as
+% the name would suggest), but there are certain non-SI units that turn out to
+% be occasionally useful when dealing with American non-scientists. |physymb|
+% defines a selection of them as macros.
+%
+% \DescribeMacro{\torr}
+% \DescribeMacro{\mmHg}
+% Torr, |\torr|, and millimeters of mercury, |\mmHg|, are common atmospheric pressure units.
+%
+% \DescribeMacro{\amu}
+% |\amu| represents the atomic mass unit, defined as $\frac{1}{12}$ of the mass of a carbon 12
+% atom.
+%
+% \DescribeMacro{\yr}
+% |\yr| represents a year with the symbol $\si{\yr}$. There are various definitions of
+% different kinds of years floating around, but generally the symbol is the same.
+%
+% \DescribeMacro{\erg}
+% |\erg| represents an erg, the CGS unit of energy, which still finds occasional use.
+% Its value is $\SI{1e-7}{\joule}$.
+%
+% \DescribeMacro{\gauss}
+% |\gauss| is the Gauss, a unit of magnetic field equal to $\SI{1e-4}{\tesla}$.
+%
+% \DescribeMacro{\molar}
+% |\molar| represents a molar, a unit of concentration equal to one mole per liter.
+% Strictly speaking, this is a chemistry unit, but it occasionally comes up in
+% physics so it shouldn't hurt to have the macro around.
+%
+% \DescribeMacro{\poise}
+% The poise is the CGS unit of viscosity, equal to $\SI{0.1}{\pascal\second}$.
+%
+% \DescribeMacro{\foot}
+% The foot is the Imperial unit of length, equal to $\SI{30.48}{\centi\meter}$.
+%
+% \DescribeMacro{\mileperhour}
+% This is typically (or perhaps almost exclusively) used to measure transportation
+% speeds: cars, trains, airplanes, etc. It's equal to about
+% $\SI{0.447}{\meter\per\second}$.
+%
+% \DescribeMacro{\pound}
+% \DescribeMacro{\poundforce}
+% The pound is the Imperial unit of either force or mass, depending on who you
+% ask. Technically I believe it is a force, but in many situations
+% I've often found it clearer to treat it as a unit of mass and use $\si{\poundforce}$
+% (pound of force) as the unit of force. |physymb| defines macros for both.
+%
+% In this sense, a pound is equal to about
+% $\SI{453.59}{\gram}$, and the pound of force is the weight of that mass
+% under standard Earth surface gravity, which works out to about
+% $\SI{4.448}{\newton}$.
+%
+% \subsection{Particle Physics}
+%
+% As a particle physicist, I do a lot of work that involves notation for elementary particles,
+% so it's become useful to have a set of macros that produce standard written representations
+% for them. The names of the commands are pretty cryptic, but I've found that once you get
+% used to using them, the names aren't hard to remember and the effort saved by having short
+% macro names at least \emph{feels} worthwhile.
+%
+% The macros in this package are implemented in terms of the |heppennames| macros. |heppennames|
+% and |hepparticles| will be loaded if the |particles| option is passed to this package.
+%
+% In general, all the macro names follow the same pattern. Each one ends with a type
+% code that identifies the type of particle: |q| for quark, |lp| for a ``regular'' lepton,
+% |nu| for a neutrino, |br| for a baryon, |m| for a meson, and |bsn| for a boson. At the
+% beginning is a particle code consisting of one or two letters that identify the specific
+% particle within that type.
+%
+% Most of the basic macros consist of just those two parts. Antifermion macros are
+% constructed by prepending an |a| to the type code. For vector bosons that occur in
+% charge triplets, you prepend one of |p| (plus), |z| (zero), or |m| (minus) to indicate
+% which one of the triplet you want. The same goes for baryons which occur in ``triplets''
+% with the same name (three particles denoted by the same letter, even though they
+% may not actually be a triplet). Singlet baryons have the |z| as well for consistency.
+%
+% The proton and neutron are named differently because their names are so common.
+%
+% \paragraph{Quarks}
+% \DescribeMacro{\upq}
+% \DescribeMacro{\dnq}
+% Each of the quark macros is named with three letters. The first two letters are the
+% particle code representing the name of the quark, and the third is the type code |q|.
+% The macros are |\upq|, |\dnq|, |\srq|, |\chq|, |\btq|, and |\tpq|, representing the
+% up, down, strange, charm, bottom, and top quarks, respectively.
+%
+% \DescribeMacro{\upaq}
+% \DescribeMacro{\dnaq}
+% The corresponding macros for the antiquarks are obtained by prepending |a| to the
+% type code |q|. We have |\upaq|, |\dnaq|, |\sraq|, |\chaq|, |\btaq|, and |\tpaq|.
+%
+% \paragraph{Leptons}
+% \DescribeMacro{\elp}
+% \DescribeMacro{\enu}
+% Leptons are done a little differently because there are two distinct types. The macros for
+% the electron, muon, and tau lepton are named with a letter and |lp|: we have |\elp| for the
+% electron, |\ulp| for the muon, and |\tlp| for the tau. Neutrino macros are constructed
+% using the same first letter, but |nu| instead of |lp|: |\enu|, |\unu|, and |\tnu|.
+%
+% \DescribeMacro{\ealp}
+% \DescribeMacro{\eanu}
+% Antileptons are named with an |a| between the particle code and the type code.
+% So we get |\ealp|, |\ualp|, and |\talp| for the ``regular'' antileptons and
+% |\eanu|, |\uanu|, and |\tanu| for the antineutrinos.
+%
+% \paragraph{Baryons}
+% \DescribeMacro{\lmzbr}
+% \DescribeMacro{\sgpbr}
+% \DescribeMacro{\sgzbr}
+% \DescribeMacro{\sgmbr}
+% Many of the most commonly referenced baryons in the standard model have
+% macros defined. Each of these ends with the type code |br|. Most of them are built
+% by putting a particle code and a charge letter together: we have |\lmzbr| for the
+% lambda baryon; |\sgpbr|, |\sgzbr|, |\sgmbr| for the sigmas, |\xizbr| and |\ximbr|
+% for the xi particles, and |\ommbr| for the omega of charge $-1$. The delta macros
+% are named on the same principle but since there are four of them, we use two charge
+% letters to indicate the $+2$ charge: |\dlppbr|, |\dlpbr|, |\dlzbr|, and |\dlmbr|.
+%
+% \DescribeMacro{\sgspbr}
+% \DescribeMacro{\sgszbr}
+% \DescribeMacro{\sgsmbr}
+% In addition, there are macros for the starred (excited) versions of the sigmas and
+% xis (only), obtained by adding an |s| before the charge letter: |\sgspbr| etc. and
+% |\xiszbr| etc.
+%
+% \DescribeMacro{\prbr}
+% \DescribeMacro{\nebr}
+% The proton and neutron don't quite fall into the pattern because their names aren't
+% used for multiple particles. The proton is |\prbr| and the neutron is |\nebr|.
+%
+% \DescribeMacro{\dlmmabr}
+% The antiparticles to all these are obtained in \emph{almost} the usual way, by
+% adding |a| just before the type code |br|. The one difference is that the charge
+% letters are updated to reflect the actual charge of the antiparticle, so for example
+% the antipartcle of the $\dlppbr$ (|\dlppbr|), the $\dlmmabr$, is written |\dlmmabr|,
+% with two |m|'s because of its double-minus charge.
+%
+% \paragraph{Mesons}
+% \DescribeMacro{\pipm}
+% \DescribeMacro{\pizm}
+% \DescribeMacro{\pimm}
+% Essentially all the mesons defined in the standard model have macros. The naming can
+% be a bit tricky because some of them are named as charge triplets while others are
+% named as antiparticles. In the former case, we have the $\pi$s, |\pipm|, |\pizm|, and |\pimm|,
+% and the $\rho$s, |\ropm|, |\rozm|, and |\romm|. (I'm not sure if it'd make it cleaner
+% to just add the |h| into the names) The kaons have similar names, |\kapm|,
+% |\kazm|, and |\kamm|, but there is also the $\kazam$, |\kazam|. Finally, the neutral
+% mesons are named |\etam|, |\etapm| (here the |p| is for ``prime,'' not ``plus''), and
+% |\phim|.
+%
+% \paragraph{Bosons}
+% \DescribeMacro{\phbsn}
+% \DescribeMacro{\Wpbsn}
+% \DescribeMacro{\Wmbsn}
+% There aren't that many bosons so the naming is simple: |\phbsn| for the photon,
+% |\Zzbsn| for the neutral $\Zzbsn$, and |\Wpbsn| and |\Wmbsn| for the $\Wbsn$s. There's
+% also |\Wbsn|, which does not indicate either charge, for when you need to refer to
+% a generic $\Wbsn$ boson. The Higgs boson is written |\hbsn|.
+%
+% \DescribeMacro{\photon}
+% Also, there is a macro |\photon| which is defined to be the same thing as |\phbsn|.
+% It's included to support some old LaTeX files I wrote and although it will
+% \emph{probably} not be removed from the package in the future, I make no guarantees.
+%
+% \subsection{Miscellaneous}
+%
+% \DescribeMacro{\scriptr} |\scriptr| produces the script r found in Griffiths'
+% electromagnetism textbook, or at least the closest equivalent in LaTeX, $\scriptr$.
+%
+% \DescribeMacro{\orderof} |\orderof|\marg{expression} represents the order of an
+% expression, for example the error term in a perturbation series. Typical usage
+% would be like
+%
+% \begin{minipage}{.64\textwidth}
+% \begin{center}
+%  |\frac{1}{1 - x} = 1 + x + \orderof{x^2}|
+% \end{center}
+% \end{minipage}
+% \begin{minipage}{.34\textwidth}
+% \begin{equation*}
+%  \frac{1}{1 - x} = 1 + x + \orderof{x^2}
+% \end{equation*}
+% \end{minipage}
+%
+% It can also be used to discuss the growth of a function, e.g.
+% ``$\orderof{x^3}$ for large $x$,'' or for similar uses such as big-O notation
+% in computer algorithm analysis.
+%
+% \DescribeMacro{\sgn}
+% There is a macro for the sign operator, |\sgn|, defined as
+% \begin{equation*}
+%  \sgn x = \begin{cases}1 & x > 0 \\ 0 & x = 0 \\ -1 & x < 0\end{cases}
+% \end{equation*}
+% (and yes, this is not really \emph{complex} analysis)
+%
+% \DescribeMacro{\round}
+% Occasionally it's useful to have some way to designate rounding a number.
+% The |\round| macro can be used for that. It comes out as $\round(x)$ (I do
+% recommend the parentheses).
+%
+% \DescribeMacro{\evalat}
+% The macro
+% |\evalat|\marg{expression}\marg{lower limit}\marg{upper limit}
+% is mainly useful for when you want to denote the numerical value
+% of a derivative at a specific point, or when you want to represent the
+% evaluation of an integral at the endpoints of the range of integration.
+% It produces a vertical bar at the right of the \meta{expression},
+% with the \meta{lower limit} and \meta{upper limit} typeset at the
+% lower and upper endpoints of the bar, respectively.
+%
+% \begin{minipage}{.64\textwidth}
+% \begin{center}
+%  |\evalat{x^3 + 3x - 5}{2}{7}|
+% \end{center}
+% \end{minipage}
+% \begin{minipage}{.34\textwidth}
+% \begin{equation*}
+%  \evalat{x^3 + 3x - 5}{2}{7}
+% \end{equation*}
+% \end{minipage}
+%
+% \StopEventually{\PrintChanges\PrintIndex}
+%
+% \section{Feedback}
+%
+% This package is always a work in progress, both in terms of adding new macros
+% to the collection and fixing any errors or inconveniences in the ones that
+% are already here. Any feedback you may have will be welcome at my email address,
+% given at the top of the document.
+%
+% \section{Bugs}
+%
+% With certain versions of LaTeX (pdflatex included in TeXLive 2009 comes to mind),
+% there is a register allocation conflict between this package and the |floatrow|
+% and |morefloats| packages. If you're using either of those along with |physymb|,
+% and you're getting |No room for a new \count| errors, you need to add
+% |\usepackage{etex}\reserveinserts{28}| to your preamble. See
+% \url{http://tex.stackexchange.com/questions/38607/no-room-for-a-new-dimen}
+% for more information.
+%
+% \section{Implementation}
+%
+% \subsection{Initialization}
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+%    \end{macrocode}
+% This flag is set if the |particle| option is enabled. It enables definitions of particle symbol macros.
+%    \begin{macrocode}
+\newboolean{pparticle}
+%    \end{macrocode}
+% This flag is set if the |feynman| option is enabled. It pulls in the |feynmf| package.
+%    \begin{macrocode}
+\newboolean{pfeynman}
+%    \end{macrocode}
+% This flag is set if the |braket| option is enabled. It pulls in the |braket| package.
+%    \begin{macrocode}
+\newboolean{pbraket}
+%    \end{macrocode}
+% This flag is set if the |units| option is enabled. It pulls in the |siunitx| package and provides additional unit definitions.
+%    \begin{macrocode}
+\newboolean{punits}
+%    \end{macrocode}
+% This flag is set if the |boldvectors| option is enabled. It causes vectors to be rendered using a bold font instead of an overset arrow.
+%    \begin{macrocode}
+\newboolean{pboldvectors}
+%    \end{macrocode}
+% This flag is set if the |mandi| option is enabled. It pulls in the |mandi| package.
+%    \begin{macrocode}
+\newboolean{pmandi}
+%    \end{macrocode}
+%
+% \subsection{Option Declarations}
+% These are the option declarations, pretty self-explanatory.
+%    \begin{macrocode}
+\DeclareOption{braket}{\setboolean{pbraket}{true}}
+\DeclareOption{mandi}{%
+ \setboolean{pmandi}{true}%
+}
+\DeclareOption{particle}{\setboolean{pparticle}{true}}
+\DeclareOption{units}{\setboolean{punits}{true}}
+\DeclareOption{feynman}{\setboolean{pfeynman}{true}}
+\DeclareOption{arrowvectors}{\setboolean{pboldvectors}{false}}
+\DeclareOption{boldvectors}{\setboolean{pboldvectors}{true}}
+\ProcessOptions\relax
+%    \end{macrocode}
+% This emits a warning that the package is obsolete:
+%    \begin{macrocode}
+\PackageWarning{physymb}{The physymb package is obsolete! See the documentation.}
+%    \end{macrocode}
+%
+% \subsection{Macro Definitions}
+% Here we bring in the AMS packages for mathematical notation.
+%    \begin{macrocode}
+\RequirePackage{amsbsy}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\allowdisplaybreaks[2]
+\RequirePackage{accents}
+%    \end{macrocode}
+% Load the |mandi| package if requested
+%    \begin{macrocode}
+\ifthenelse{\boolean{pmandi}}{%
+ \RequirePackage{mandi}[2014/12/18]%
+}{}
+%    \end{macrocode}
+% Load the |hepparticles| and |heppennames| package if particles are requested
+%    \begin{macrocode}
+\ifthenelse{\boolean{pparticle}}{%
+ \RequirePackage{hepparticles}%
+ \RequirePackage{heppennames}%
+}{}
+%    \end{macrocode}
+% |mandi| is the package that includes the script r, $\scriptr$.
+%    \begin{macrocode}
+\AtBeginDocument{
+ \ifthenelse{\isundefined{\scripty}}{%
+  \newcommand{\scriptr}{\PackageError{physymb}{script r requires the mandi package}}%
+ }{%
+  \newcommand{\scriptr}{\scripty{r}}%
+ }
+}
+%    \end{macrocode}
+% The |commath| package is used to implement differentials and derivatives.
+%    \begin{macrocode}
+\RequirePackage{commath}
+%    \end{macrocode}
+% Here we load the |braket| package if the corresponding option was passed.
+%    \begin{macrocode}
+\ifthenelse{\boolean{pbraket}}
+{
+ \RequirePackage{braket}
+%    \end{macrocode}
+% Semantic Dirac notation, implemented on top of braket macros
+%    \begin{macrocode}
+ \newcommand{\project}[2]{\ket{#1}#2\bra{#1}}
+ \newcommand{\Project}[2]{\Ket{#1}#2\Bra{#1}}
+ \newcommand{\expect}[1]{\braket{#1}}
+ \newcommand{\Expect}[1]{\Braket{#1}}
+}
+{}
+%    \end{macrocode}
+% Here we load |siunitx| if the |units| option was passed.
+%    \begin{macrocode}
+\ifthenelse{\boolean{punits}}
+{
+ \RequirePackage{siunitx}
+%    \end{macrocode}
+% These are some useful non-SI units
+%    \begin{macrocode}
+ \DeclareSIUnit{\torr}{torr}
+ \DeclareSIUnit{\mmhg}{mmHg}
+ \DeclareSIUnit{\amu}{amu}
+ \DeclareSIUnit{\yr}{yr}
+ \DeclareSIUnit{\erg}{erg}
+ \DeclareSIUnit{\gauss}{Ga}
+ \DeclareSIUnit{\molar}{\textsc{M}} % this follows the style set up in the siunitx manual
+ \DeclareSIUnit{\poise}{P}
+ \DeclareSIUnit{\foot}{ft}
+ \DeclareSIUnit{\mileperhour}{mph}
+ \DeclareSIUnit{\pound}{lb}
+ \DeclareSIUnit{\poundforce}{lbf}
+}
+{}
+%    \end{macrocode}
+%
+% Now we come to assorted functions and keywords.
+%
+% First the inverse trig functions. These are defined in the |mandi| package,
+% but for backward compatibility I would like to give an informative error
+% message if anyone tries to use them without loading |mandi|. The solution
+% used here is to defer defining the functions until the end of the preamble,
+% after all packages have been loaded.
+%    \begin{macrocode}
+\AtBeginDocument{%
+%    \end{macrocode}
+% At this point, if |mandi| has been loaded (or if some other package has
+% defined these commands), the following |\providecommand|s will do nothing.
+%    \begin{macrocode}
+ \providecommand{\asin}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\acos}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\atan}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\asec}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\acsc}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\acot}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+%    \end{macrocode}
+% Same for hyperbolic trig functions:
+%    \begin{macrocode}
+ \providecommand{\sech}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\csch}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\asinh}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\acosh}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\atanh}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\asech}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\acsch}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\acoth}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+}
+%    \end{macrocode}
+% Next are some linear algebra keywords.
+%    \begin{macrocode}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\realop}{Re}
+\DeclareMathOperator{\imagop}{Im}
+\newcommand{\real}[1]{\realop\{#1\}}
+\newcommand{\imag}[1]{\imagop\{#1\}}
+%    \end{macrocode}
+% The absolute value and norm notations are implemented by |commath| so there
+% is nothing to do for them here.
+%
+% Evaluation at endpoints is implemented by either |commath| or |mandi|.
+% As with the trig functions, we want to wait until the end of the preamble
+% so that if |mandi| is loaded later, its definition of |\evalat| will remain.
+% Otherwise, we implement it in terms of |commath|'s |\eval|.
+%    \begin{macrocode}
+\AtBeginDocument{%
+ \providecommand{\evalat}[3]{\eval{#1}_{#2}^{#3}}%
+}
+%    \end{macrocode}
+% If |mandi| is loaded, we can use its implementation of |\sgn|.
+%    \begin{macrocode}
+\AtBeginDocument{%
+ \providecommand{\sgn}{\PackageError{physymb}{signum requires the mandi package}}
+}
+%    \end{macrocode}
+% Same goes for |\orderof|.
+%    \begin{macrocode}
+\AtBeginDocument{
+ \providecommand{\orderof}{\PackageError{physymb}{orderof requires the mandi package}}
+}
+%    \end{macrocode}
+% Poisson brackets are just braces
+%    \begin{macrocode}
+\newcommand{\pbrac}[2]{\left\{#1,#2\right\}}
+\newcommand{\pbracvars}[4]{\left\{#1,#2\right\}_{#3,#4}}
+%    \end{macrocode}
+% This handles the redefinition of |\vec|. If the |boldvectors| option was passed,
+% a vector is denoted by bolding the argument. If |arrowvectors| was passed, the
+% vector is denoted by putting an arrow over the argument.
+% Some people use an undertilde, which will probably be added in the future.
+%    \begin{macrocode}
+\ifthenelse{\boolean{pboldvectors}}%
+ {\renewcommand{\vec}[1]{\mathbf{#1}}}%
+ {\renewcommand{\vec}[1]{\accentset{\rightharpoonup}{#1}}}
+%    \end{macrocode}
+% |\vecvar| is just a synonym for |\vec|
+%    \begin{macrocode}
+\newcommand{\vecvar}[1]{\vec{#1}}
+%    \end{macrocode}
+% |\tnsvar| always uses bold. Some people use undertildes, which will be added.
+%    \begin{macrocode}
+\newcommand{\tnsvar}[1]{\mathbf{#1}}
+%    \end{macrocode}
+% |\matvar| always uses bold.
+%    \begin{macrocode}
+\newcommand{\matvar}[1]{\mathbf{#1}}
+%    \end{macrocode}
+% |\identitym| is a bold $1$
+%    \begin{macrocode}
+\newcommand{\identitym}{\mathbf{1}}
+%    \end{macrocode}
+% |\determinant| uses vertical bars.
+%    \begin{macrocode}
+\newcommand{\determinant}[1]{\envert{#1}}
+%    \end{macrocode}
+% |\trace| uses capital Tr.
+%    \begin{macrocode}
+\DeclareMathOperator{\trace}{Tr}
+%    \end{macrocode}
+% Now we get to unit vectors. This is just a wrapper for |\dirvect| from |mandi|.
+%    \begin{macrocode}
+\AtBeginDocument{
+ \ifthenelse{\isundefined{\dirvect}}{%
+  \newcommand{\unitvec}[1]{\PackageError{physymb}{unit vectors require the mandi package}}
+ }{%
+  \newcommand{\unitvec}[1]{\dirvect{#1}}
+ }
+}%
+%    \end{macrocode}
+% And these are a bunch of predefined unit vectors. Note that |\unitl| now
+% uses a regular lowercase $l$, rather than the scripe $\ell$ as in previous
+% versions. The new command |\unitell| will give you a unit $\ell$.
+%    \begin{macrocode}
+\newcommand{\unitd}{\unitvec{d}}
+\newcommand{\unite}{\unitvec{e}}
+\newcommand{\uniti}{\unitvec{\imath}}
+\newcommand{\unitj}{\unitvec{\jmath}}
+\newcommand{\unitk}{\unitvec{k}}
+\newcommand{\unitl}{\unitvec{l}}
+\newcommand{\unitell}{\unitvec{\ell}}
+\newcommand{\unitn}{\unitvec{n}}
+\newcommand{\unitp}{\unitvec{p}}
+\newcommand{\unitq}{\unitvec{q}}
+\newcommand{\unitr}{\unitvec{r}}
+\newcommand{\units}{\unitvec{s}}
+\newcommand{\unitt}{\unitvec{t}}
+\newcommand{\unitu}{\unitvec{u}}
+\newcommand{\unitv}{\unitvec{v}}
+\newcommand{\unitw}{\unitvec{w}}
+\newcommand{\unitx}{\unitvec{x}}
+\newcommand{\unity}{\unitvec{y}}
+\newcommand{\unitz}{\unitvec{z}}
+\newcommand{\unitphi}{\unitvec{\phi}}
+\newcommand{\unitrho}{\unitvec{\rho}}
+\newcommand{\unittheta}{\unitvec{\theta}}
+\newcommand{\unitomega}{\unitvec{\omega}}
+%    \end{macrocode}
+% |\udc| is just an upright (roman) d, and similarly for higher-order differentials,
+% implemented in terms of |\dif| from |commath|.
+%    \begin{macrocode}
+\newcommand{\udc}{\dif}
+\newcommand{\uddc}{\dif^2}
+\newcommand{\udddc}{\dif^3}
+%    \end{macrocode}
+% |\pdc| is just |\partial|, defined for similarity with |\udc|.
+%    \begin{macrocode}
+\newcommand{\pdc}{\partial}
+\newcommand{\pddc}{\partial^2}
+\newcommand{\pdddc}{\partial^3}
+%    \end{macrocode}
+% |\uds| is just like |\udc| but it includes a small space in front.
+%    \begin{macrocode}
+\newcommand{\uds}{\,\dif}
+\newcommand{\udds}{\,\dif^2}
+\newcommand{\uddds}{\,\dif^3}
+%    \end{macrocode}
+% |\pds| is also defined for similarity as just |\partial| with a space in front,
+% although I'm not sure this one is really useful.
+%    \begin{macrocode}
+\newcommand{\pds}{\,\partial}
+\newcommand{\pdds}{\,\partial^2}
+\newcommand{\pddds}{\,\partial^3}
+%    \end{macrocode}
+% |\ud| typesets a derivative using |\udc|. Similarly for second and third derivatives.
+%    \begin{macrocode}
+\let\ud\od
+\newcommand{\udd}[2]{\od[2]{#1}{#2}}
+\newcommand{\uddd}[2]{\od[3]{#1}{#2}}
+%    \end{macrocode}
+% |\pd| (defined in |commath|) does the same for partial derivatives with |\pdc|.
+%    \begin{macrocode}
+\newcommand{\pdd}[2]{\pd[2]{#1}{#2}}
+\newcommand{\pddd}[2]{\pd[3]{#1}{#2}}
+%    \end{macrocode}
+%
+% All of |\div|, |\grad|, and |\curl| come from |mandi|.
+%    \begin{macrocode}
+\AtBeginDocument{
+ \@ifpackageloaded{mandi}{%
+  \let\grad\gradient
+  \let\div\divergence
+  \let\lapl\laplacian
+ }{%
+  \providecommand{\grad}{\PackageError{physymb}{gradient requires the mandi package}}
+  % use renew instead of provide because \div is defined in plain latex
+  \renewcommand{\div}{\PackageError{physymb}{divergence requires the mandi package}}
+  \providecommand{\curl}{\PackageError{physymb}{curl requires the mandi package}}
+  \providecommand{\lapl}{\PackageError{physymb}{laplacian requires the mandi package}}
+ }
+}
+%    \end{macrocode}
+% |\conj| just puts a superscript star
+%    \begin{macrocode}
+\newcommand{\conj}[1]{{#1 ^{*}}}
+%    \end{macrocode}
+% |\herm| is the same thing but for operators or matrices, so with a dagger
+%    \begin{macrocode}
+\newcommand{\herm}[1]{{#1 ^{\dagger}}}
+%    \end{macrocode}
+% |\transpose| does the same with a $T$
+%    \begin{macrocode}
+\newcommand{\transpose}[1]{{#1 ^{T}}}
+%    \end{macrocode}
+% These set notations are mostly done with |\mathbb|
+%    \begin{macrocode}
+\newcommand{\natset}{\mathbb{N}}
+\newcommand{\intset}{\mathbb{Z}}
+\newcommand{\cpxset}{\mathbb{C}}
+\newcommand{\whlset}{\mathbb{Q}}
+\newcommand{\realset}{\mathbb{R}}
+\newcommand{\imagset}{\mathbb{I}}
+%    \end{macrocode}
+% Commutators and anticommutators are done in the obvious way
+%    \begin{macrocode}
+\newcommand{\commut}[2]{\left[ #1, #2 \right]}
+\newcommand{\acommut}[2]{\left\{ #1, #2 \right\}}
+%    \end{macrocode}
+% The |\round| operator just typesets the word ``round''
+%    \begin{macrocode}
+\DeclareMathOperator{\round}{round}
+%    \end{macrocode}
+% The exterior derivative is typeset in bold, in contrast to the differential $\udc$ which
+% is just a plain roman font
+%    \begin{macrocode}
+\DeclareMathOperator{\exd}{\mathbf{d}}
+%    \end{macrocode}
+% The Hodge dual uses a star, but not superscript like |\conj|.
+%    \begin{macrocode}
+\newcommand{\hodge}{\star}
+%    \end{macrocode}
+% These are short macros to typeset the symbols for the elementary (and common non-elementary)
+% particles. They are defined in terms of commands from |heppennames|, but only if the
+% |particle| option was passed.
+%    \begin{macrocode}
+\ifthenelse{\boolean{pparticle}}
+{
+\let\upq\Pqu
+\let\dnq\Pqd
+\let\srq\Pqs
+\let\chq\Pqc
+\let\btq\Pqb
+\let\tpq\Pqt
+\let\upaq\Paqu
+\let\dnaq\Paqd
+\let\sraq\Paqs
+\let\chaq\Paqc
+\let\btaq\Paqb
+\let\tpaq\Paqt
+\let\elp\Pem
+\let\enu\Pgne
+\let\ulp\Pgmm
+\let\unu\Pgngm
+\let\tlp\Pgtm
+\let\tnu\Pgngt
+\let\ealp\Pep
+\let\eanu\Pagne
+\let\ualp\Pgmp
+\let\uanu\Pagngm
+\let\talp\Pgtp
+\let\tanu\Pagngt
+\let\prbr\Pp
+\let\nebr\Pn
+\let\lmzbr\PgL
+\let\sgpbr\PgSp
+\let\sgzbr\PgSz
+\let\sgmbr\PgSm
+\newcommand\dlppbr{\HepParticle{\Delta}{}{++}}
+\newcommand\dlpbr{\HepParticle{\Delta}{}{+}}
+\newcommand\dlzbr{\HepParticle{\Delta}{}{0}}
+\newcommand\dlmbr{\HepParticle{\Delta}{}{-}}
+\let\xizbr\PgXz
+\let\ximbr\PgXm
+\let\ommbr\PgOm
+\newcommand\sgspbr{\HepParticle{\Sigma}{}{*+}}
+\newcommand\sgszbr{\HepParticle{\Sigma}{}{*0}}
+\newcommand\sgsmbr{\HepParticle{\Sigma}{}{*-}}
+\newcommand\xiszbr{\HepParticle{\Xi}{}{*0}}
+\newcommand\xismbr{\HepParticle{\Xi}{}{*-}}
+\let\prabr\Pap
+\let\neabr\Pan
+\newcommand\dlpabr{\HepAntiParticle{\Delta}{}{+}}
+\newcommand\dlzabr{\HepAntiParticle{\Delta}{}{0}}
+\newcommand\dlmabr{\HepAntiParticle{\Delta}{}{-}}
+\newcommand\dlmmabr{\HepAntiParticle{\Delta}{}{--}}
+\let\pipm\Pgpm
+\let\pizm\Pgpz
+\let\pimm\Pgpp
+\let\kapm\PKp
+\let\kazm\PKz
+\let\kazam\PaKz
+\let\kamm\PKm
+\let\ropm\Pgrp
+\let\rozm\Pgrz
+\let\romm\Pgrm
+\let\etam\Pgh
+\let\etapm\Pghpr
+\newcommand\kaspm{\HepParticle{K}{}{*+}}
+\newcommand\kaszm{\HepParticle{K}{}{*0}}
+\newcommand\kaszam{\HepAntiParticle{K}{}{*0}}
+\newcommand\kasmm{\HepParticle{K}{}{*-}}
+\let\omm\Pgo
+\let\phim\Pgf
+\let\phbsn\Pgg
+\let\Wbsn\PW
+\let\Wpbsn\PWp
+\let\Wmbsn\PWm
+\let\Zzbsn\PZ
+\let\hbsn\Ph
+\let\photon\Pgg
+}
+{}
+%    \end{macrocode}
+% The |feynman| option is implemented by just loading the package |feynmp|.
+%    \begin{macrocode}
+\ifthenelse{\boolean{pfeynman}}%
+ {\RequirePackage{feynmp}}%
+ {}
+%    \end{macrocode}
+%
+% \pagebreak[2]
+% \Finale

@@ -1,0 +1,298 @@
+%%
+%% This is file `physymb.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% physymb.dtx  (with options: `package')
+%% This is a generated file.
+%% Copyright (C) 2005-2011 by David Zaslavsky <diazona@ellipsix.net>
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in:
+%% http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of
+%% LaTeX version 2005/12/01 or later.
+
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{physymb}[2014/12/19 v0.3 Physics symbol definitions]
+
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+\RequirePackage{ifthen}
+\newboolean{pparticle}
+\newboolean{pfeynman}
+\newboolean{pbraket}
+\newboolean{punits}
+\newboolean{pboldvectors}
+\newboolean{pmandi}
+\DeclareOption{braket}{\setboolean{pbraket}{true}}
+\DeclareOption{mandi}{%
+ \setboolean{pmandi}{true}%
+}
+\DeclareOption{particle}{\setboolean{pparticle}{true}}
+\DeclareOption{units}{\setboolean{punits}{true}}
+\DeclareOption{feynman}{\setboolean{pfeynman}{true}}
+\DeclareOption{arrowvectors}{\setboolean{pboldvectors}{false}}
+\DeclareOption{boldvectors}{\setboolean{pboldvectors}{true}}
+\ProcessOptions\relax
+\PackageWarning{physymb}{The physymb package is obsolete! See the documentation.}
+\RequirePackage{amsbsy}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\allowdisplaybreaks[2]
+\RequirePackage{accents}
+\ifthenelse{\boolean{pmandi}}{%
+ \RequirePackage{mandi}[2014/12/18]%
+}{}
+\ifthenelse{\boolean{pparticle}}{%
+ \RequirePackage{hepparticles}%
+ \RequirePackage{heppennames}%
+}{}
+\AtBeginDocument{
+ \ifthenelse{\isundefined{\scripty}}{%
+  \newcommand{\scriptr}{\PackageError{physymb}{script r requires the mandi package}}%
+ }{%
+  \newcommand{\scriptr}{\scripty{r}}%
+ }
+}
+\RequirePackage{commath}
+\ifthenelse{\boolean{pbraket}}
+{
+ \RequirePackage{braket}
+ \newcommand{\project}[2]{\ket{#1}#2\bra{#1}}
+ \newcommand{\Project}[2]{\Ket{#1}#2\Bra{#1}}
+ \newcommand{\expect}[1]{\braket{#1}}
+ \newcommand{\Expect}[1]{\Braket{#1}}
+}
+{}
+\ifthenelse{\boolean{punits}}
+{
+ \RequirePackage{siunitx}
+ \DeclareSIUnit{\torr}{torr}
+ \DeclareSIUnit{\mmhg}{mmHg}
+ \DeclareSIUnit{\amu}{amu}
+ \DeclareSIUnit{\yr}{yr}
+ \DeclareSIUnit{\erg}{erg}
+ \DeclareSIUnit{\gauss}{Ga}
+ \DeclareSIUnit{\molar}{\textsc{M}} % this follows the style set up in the siunitx manual
+ \DeclareSIUnit{\poise}{P}
+ \DeclareSIUnit{\foot}{ft}
+ \DeclareSIUnit{\mileperhour}{mph}
+ \DeclareSIUnit{\pound}{lb}
+ \DeclareSIUnit{\poundforce}{lbf}
+}
+{}
+\AtBeginDocument{%
+ \providecommand{\asin}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\acos}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\atan}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\asec}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\acsc}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\acot}{\PackageError{physymb}{inverse trig functions require the mandi package}}
+ \providecommand{\sech}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\csch}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\asinh}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\acosh}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\atanh}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\asech}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\acsch}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+ \providecommand{\acoth}{\PackageError{physymb}{hyperbolic trig functions require the mandi package}}
+}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\realop}{Re}
+\DeclareMathOperator{\imagop}{Im}
+\newcommand{\real}[1]{\realop\{#1\}}
+\newcommand{\imag}[1]{\imagop\{#1\}}
+\AtBeginDocument{%
+ \providecommand{\evalat}[3]{\eval{#1}_{#2}^{#3}}%
+}
+\AtBeginDocument{%
+ \providecommand{\sgn}{\PackageError{physymb}{signum requires the mandi package}}
+}
+\AtBeginDocument{
+ \providecommand{\orderof}{\PackageError{physymb}{orderof requires the mandi package}}
+}
+\newcommand{\pbrac}[2]{\left\{#1,#2\right\}}
+\newcommand{\pbracvars}[4]{\left\{#1,#2\right\}_{#3,#4}}
+\ifthenelse{\boolean{pboldvectors}}%
+ {\renewcommand{\vec}[1]{\mathbf{#1}}}%
+ {\renewcommand{\vec}[1]{\accentset{\rightharpoonup}{#1}}}
+\newcommand{\vecvar}[1]{\vec{#1}}
+\newcommand{\tnsvar}[1]{\mathbf{#1}}
+\newcommand{\matvar}[1]{\mathbf{#1}}
+\newcommand{\identitym}{\mathbf{1}}
+\newcommand{\determinant}[1]{\envert{#1}}
+\DeclareMathOperator{\trace}{Tr}
+\AtBeginDocument{
+ \ifthenelse{\isundefined{\dirvect}}{%
+  \newcommand{\unitvec}[1]{\PackageError{physymb}{unit vectors require the mandi package}}
+ }{%
+  \newcommand{\unitvec}[1]{\dirvect{#1}}
+ }
+}%
+\newcommand{\unitd}{\unitvec{d}}
+\newcommand{\unite}{\unitvec{e}}
+\newcommand{\uniti}{\unitvec{\imath}}
+\newcommand{\unitj}{\unitvec{\jmath}}
+\newcommand{\unitk}{\unitvec{k}}
+\newcommand{\unitl}{\unitvec{l}}
+\newcommand{\unitell}{\unitvec{\ell}}
+\newcommand{\unitn}{\unitvec{n}}
+\newcommand{\unitp}{\unitvec{p}}
+\newcommand{\unitq}{\unitvec{q}}
+\newcommand{\unitr}{\unitvec{r}}
+\newcommand{\units}{\unitvec{s}}
+\newcommand{\unitt}{\unitvec{t}}
+\newcommand{\unitu}{\unitvec{u}}
+\newcommand{\unitv}{\unitvec{v}}
+\newcommand{\unitw}{\unitvec{w}}
+\newcommand{\unitx}{\unitvec{x}}
+\newcommand{\unity}{\unitvec{y}}
+\newcommand{\unitz}{\unitvec{z}}
+\newcommand{\unitphi}{\unitvec{\phi}}
+\newcommand{\unitrho}{\unitvec{\rho}}
+\newcommand{\unittheta}{\unitvec{\theta}}
+\newcommand{\unitomega}{\unitvec{\omega}}
+\newcommand{\udc}{\dif}
+\newcommand{\uddc}{\dif^2}
+\newcommand{\udddc}{\dif^3}
+\newcommand{\pdc}{\partial}
+\newcommand{\pddc}{\partial^2}
+\newcommand{\pdddc}{\partial^3}
+\newcommand{\uds}{\,\dif}
+\newcommand{\udds}{\,\dif^2}
+\newcommand{\uddds}{\,\dif^3}
+\newcommand{\pds}{\,\partial}
+\newcommand{\pdds}{\,\partial^2}
+\newcommand{\pddds}{\,\partial^3}
+\let\ud\od
+\newcommand{\udd}[2]{\od[2]{#1}{#2}}
+\newcommand{\uddd}[2]{\od[3]{#1}{#2}}
+\newcommand{\pdd}[2]{\pd[2]{#1}{#2}}
+\newcommand{\pddd}[2]{\pd[3]{#1}{#2}}
+\AtBeginDocument{
+ \@ifpackageloaded{mandi}{%
+  \let\grad\gradient
+  \let\div\divergence
+  \let\lapl\laplacian
+ }{%
+  \providecommand{\grad}{\PackageError{physymb}{gradient requires the mandi package}}
+  % use renew instead of provide because \div is defined in plain latex
+  \renewcommand{\div}{\PackageError{physymb}{divergence requires the mandi package}}
+  \providecommand{\curl}{\PackageError{physymb}{curl requires the mandi package}}
+  \providecommand{\lapl}{\PackageError{physymb}{laplacian requires the mandi package}}
+ }
+}
+\newcommand{\conj}[1]{{#1 ^{*}}}
+\newcommand{\herm}[1]{{#1 ^{\dagger}}}
+\newcommand{\transpose}[1]{{#1 ^{T}}}
+\newcommand{\natset}{\mathbb{N}}
+\newcommand{\intset}{\mathbb{Z}}
+\newcommand{\cpxset}{\mathbb{C}}
+\newcommand{\whlset}{\mathbb{Q}}
+\newcommand{\realset}{\mathbb{R}}
+\newcommand{\imagset}{\mathbb{I}}
+\newcommand{\commut}[2]{\left[ #1, #2 \right]}
+\newcommand{\acommut}[2]{\left\{ #1, #2 \right\}}
+\DeclareMathOperator{\round}{round}
+\DeclareMathOperator{\exd}{\mathbf{d}}
+\newcommand{\hodge}{\star}
+\ifthenelse{\boolean{pparticle}}
+{
+\let\upq\Pqu
+\let\dnq\Pqd
+\let\srq\Pqs
+\let\chq\Pqc
+\let\btq\Pqb
+\let\tpq\Pqt
+\let\upaq\Paqu
+\let\dnaq\Paqd
+\let\sraq\Paqs
+\let\chaq\Paqc
+\let\btaq\Paqb
+\let\tpaq\Paqt
+\let\elp\Pem
+\let\enu\Pgne
+\let\ulp\Pgmm
+\let\unu\Pgngm
+\let\tlp\Pgtm
+\let\tnu\Pgngt
+\let\ealp\Pep
+\let\eanu\Pagne
+\let\ualp\Pgmp
+\let\uanu\Pagngm
+\let\talp\Pgtp
+\let\tanu\Pagngt
+\let\prbr\Pp
+\let\nebr\Pn
+\let\lmzbr\PgL
+\let\sgpbr\PgSp
+\let\sgzbr\PgSz
+\let\sgmbr\PgSm
+\newcommand\dlppbr{\HepParticle{\Delta}{}{++}}
+\newcommand\dlpbr{\HepParticle{\Delta}{}{+}}
+\newcommand\dlzbr{\HepParticle{\Delta}{}{0}}
+\newcommand\dlmbr{\HepParticle{\Delta}{}{-}}
+\let\xizbr\PgXz
+\let\ximbr\PgXm
+\let\ommbr\PgOm
+\newcommand\sgspbr{\HepParticle{\Sigma}{}{*+}}
+\newcommand\sgszbr{\HepParticle{\Sigma}{}{*0}}
+\newcommand\sgsmbr{\HepParticle{\Sigma}{}{*-}}
+\newcommand\xiszbr{\HepParticle{\Xi}{}{*0}}
+\newcommand\xismbr{\HepParticle{\Xi}{}{*-}}
+\let\prabr\Pap
+\let\neabr\Pan
+\newcommand\dlpabr{\HepAntiParticle{\Delta}{}{+}}
+\newcommand\dlzabr{\HepAntiParticle{\Delta}{}{0}}
+\newcommand\dlmabr{\HepAntiParticle{\Delta}{}{-}}
+\newcommand\dlmmabr{\HepAntiParticle{\Delta}{}{--}}
+\let\pipm\Pgpm
+\let\pizm\Pgpz
+\let\pimm\Pgpp
+\let\kapm\PKp
+\let\kazm\PKz
+\let\kazam\PaKz
+\let\kamm\PKm
+\let\ropm\Pgrp
+\let\rozm\Pgrz
+\let\romm\Pgrm
+\let\etam\Pgh
+\let\etapm\Pghpr
+\newcommand\kaspm{\HepParticle{K}{}{*+}}
+\newcommand\kaszm{\HepParticle{K}{}{*0}}
+\newcommand\kaszam{\HepAntiParticle{K}{}{*0}}
+\newcommand\kasmm{\HepParticle{K}{}{*-}}
+\let\omm\Pgo
+\let\phim\Pgf
+\let\phbsn\Pgg
+\let\Wbsn\PW
+\let\Wpbsn\PWp
+\let\Wmbsn\PWm
+\let\Zzbsn\PZ
+\let\hbsn\Ph
+\let\photon\Pgg
+}
+{}
+\ifthenelse{\boolean{pfeynman}}%
+ {\RequirePackage{feynmp}}%
+ {}
+\endinput
+%%
+%% End of file `physymb.sty'.
