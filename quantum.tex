@@ -93,7 +93,7 @@ $$\lambda'-\lambda_0=\frac{h}{mc}\left(1-\cos \theta\right)$$
 \section{De Broglie Relation}\marginnote[0pt]{\subsection{Planck-Einstein Relation}
 $$E=\frac{h}{T}=hf=\hbar \omega$$}
 All matter can exhibit wave-like behavior. For example, a beam of electrons can be diffracted just like a beam of light or a water wave. Matter waves are a central part of the theory of quantum mechanics, being an example of wave-particle duality. The concept that matter behaves like a wave is also referred to as the de Broglie hypothesis due to having been proposed by Louis de Broglie in 1924.  Matter waves are often referred to as de Broglie waves.\\
-The de Broglie wavelength is the wavelength, $\lambda$, associated with a massive particle and is related to its momentum, $p$, through the Planck constant, $h$.
+The De Broglie wavelength is the wavelength, $\lambda$, associated with a massive particle and is related to its momentum, $p$, through the Planck constant, $h$.
 $$p=\frac{h}{\lambda}=\hbar k$$
 \begin{marginfigure}[0pt]
   \includegraphics[width=\linewidth]{debroglie.jpg}
@@ -306,6 +306,53 @@ $$H_n(z)=(-1)^n~ e^{z^2}\frac{d^n}{dz^n}\left(e^{-z^2}\right)$$
 The quantized energy states are written as follows.
 $$ E_n = \hbar \omega \left(n + {1\over 2}\right) = (2 n + 1) {\hbar \over 2} \omega$$
 This energy spectrum is noteworthy for three reasons. First, the energies are quantized, meaning that only discrete energy values.  Second, these discrete energy levels are equally spaced, unlike in the Bohr model of the atom, or the particle in a box. Third, the lowest achievable energy (the energy of the n = 0 state, called the ground state) is not equal to the minimum of the potential well, but $\nicefrac{\hbar \omega}{2}$ above it; this is called zero-point energy. Because of the zero-point energy, the position and momentum of the oscillator in the ground state are not fixed (as they would be in a classical oscillator), but have a small range of variance, in accordance with the Heisenberg uncertainty principle. This zero-point energy further has important implications in quantum field theory and quantum gravity.
+
+\section{Spin}
+
+\begin{marginfigure}[20pt]
+  \includegraphics[width=\linewidth]{stern_ger.jpg}
+  \caption{Stern-Gerlach experiment}
+  \label{fig:fig}
+\end{marginfigure}
+Spin is an intrinsic form of angular momentum carried by elementary particles, composite particles (hadrons), and atomic nuclei.
+
+Spin is one of two types of angular momentum in quantum mechanics, the other being orbital angular momentum. The orbital angular momentum operator is the quantum-mechanical counterpart to the classical angular momentum of orbital revolution: it arises when a particle executes a rotating or twisting trajectory (such as when an electron orbits a nucleus). The existence of spin angular momentum is inferred from experiments, such as the Stern-Gerlach experiment, in which particles are observed to possess angular momentum that cannot be accounted for by orbital angular momentum alone.
+
+\marginnote{In the original Stern-Gerlach experiment, silver atoms were sent through a non-uniform magnetic field, which deflected them before they struck a detector screen. Other kinds of particles can be used. If the particles have a magnetic moment related to their spin angular momentum, the magnetic field gradient deflects them from a straight path. The screen reveals discrete points of accumulation rather than a continuous distribution, owing to the quantum nature of spin. Historically, this experiment was decisive in convincing physicists of the reality of angular momentum quantization in all atomic-scale systems.}
+
+In some ways, spin is like a vector quantity; it has a definite magnitude, and it has a "direction" (but quantization makes this "direction" different from the direction of an ordinary vector). All elementary particles of a given kind have the same magnitude of spin angular momentum, which is indicated by assigning the particle a spin quantum number.
+
+Spin was first discovered in the context of the emission spectrum of alkali metals. In 1924 Wolfgang Pauli introduced what he called a "two-valued quantum degree of freedom" associated with the electron in the outermost shell. This allowed him to formulate the Pauli exclusion principle, stating that no two electrons can share the same quantum state at the same time.
+
+\begin{marginfigure}[20pt]
+  \includegraphics[width=\linewidth]{spin_e.jpg}
+  \caption{Spin is intrinsic angular momentum}
+  \label{fig:fig}
+\end{marginfigure}
+\section{Dirac Equation}
+In particle physics, the Dirac equation is a relativistic wave equation derived by British physicist Paul Dirac in 1928. In its free form, or including electromagnetic interactions, it describes all spin-$\nicefrac{1}{2}$ massive particles such as electrons and quarks, for which parity is a symmetry, and is consistent with both the principles of quantum mechanics and the theory of special relativity, and was the first theory to account fully for special relativity in the context of quantum mechanics. It accounted for the fine details of the hydrogen spectrum in a completely rigorous way.
+
+The equation also implied the existence of a new form of matter, antimatter, previously unsuspected and unobserved and which was experimentally confirmed several years later. It also provided a theoretical justification for the introduction of several-component wave functions in Pauli's phenomenological theory of spin; the wave functions in the Dirac theory are vectors of four complex numbers (known as bispinors), two of which resemble the Pauli wavefunction in the non-relativistic limit, in contrast to the Schrödinger equation which described wave functions of only one complex value. Moreover, in the limit of zero mass, the Dirac equation reduces to the Weyl equation.
+\begin{marginfigure}[0pt]
+  \includegraphics[width=\linewidth]{dirac_sea.jpg}
+  \caption{Vacuum fluctuations}
+  \label{fig:fig}
+\end{marginfigure}
+Although Dirac did not at first fully appreciate the importance of his results, the entailed explanation of spin as a consequence of the union of quantum mechanics and relativity - and the eventual discovery of the positron - represents one of the great triumphs of theoretical physics. This accomplishment has been described as fully on a par with the works of Newton, Maxwell, and Einstein before him. In the context of quantum field theory, the Dirac equation is reinterpreted to describe quantum fields corresponding to spin-$\nicefrac{1}{2}$ particles.
+$$\frac{E^2}{c^2} - p^2 = m^2c^2$$
+Starting from the relativistic relation between energy and momentum.
+$$-\frac{\hbar^2}{2m}\nabla^2\phi = i\hbar\frac{\partial}{\partial t}\phi.$$
+The Schrodinger equation transforms to the Dirac equation.
+$$\left(-\frac{1}{c^2}\frac{\partial^2}{\partial t^2} + \nabla^2\right)\phi = \frac{m^2c^2}{\hbar^2}\phi$$
+\subsection{Negative Energies}
+\begin{marginfigure}[80pt]
+  \includegraphics[width=\linewidth]{dirac.jpg}
+  \caption{Paul Dirac at CERN}
+  \label{fig:fig}
+\end{marginfigure}
+The negative E solutions to the equation are problematic, for it was assumed that the particle has a positive energy. Mathematically speaking, however, there seems to be no reason for us to reject the negative-energy solutions. Since they exist, we cannot simply ignore them, for once we include the interaction between the electron and the electromagnetic field, any electron placed in a positive-energy eigenstate would decay into negative-energy eigenstates of successively lower energy. Real electrons obviously do not behave in this way, or they would disappear by emitting energy in the form of photons.
+
+To cope with this problem, Dirac introduced the hypothesis, known as hole theory, that the vacuum is the many-body quantum state in which all the negative-energy electron eigenstates are occupied. This description of the vacuum as a "sea" of electrons is called the Dirac sea. Since the Pauli exclusion principle forbids electrons from occupying the same state, any additional electron would be forced to occupy a positive-energy eigenstate, and positive-energy electrons would be forbidden from decaying into negative-energy eigenstates.
 
 
 
